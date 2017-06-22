@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.greatest.appmarket">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 读取网络信息状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取当前wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 读取手机信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 外存储写入权限，构建语法需要用到此权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 摄相头权限，拍照需要用到 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--配置权限，用来记录应用配置信息 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!--手机定位信息，用来为语义等功能提供定位，提供更精准的服务-->
+    <!--定位信息是敏感信息，可通过Setting.setLocationEnable(false)关闭定位请求 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".global.ApplicationMarketApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon_appstore"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ScanActivity" />
+        <activity android:name=".activity.UserActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.AppDetailActivity" />
+        <activity android:name=".activity.ImageDetailActivity" />
+        <activity android:name=".activity.DownloadInfoActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <!-- QQ和QQ空间分享 QQ登录的回调必须要配置的 -->
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 新浪微博客户端分享回调必须配置 -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.AppInstallActivity"></activity>
+    </application>
+
+</manifest>
